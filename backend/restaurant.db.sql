@@ -1,3 +1,5 @@
+SELECT * FROM Menu;
+
 -- สร้างตาราง Category
 CREATE TABLE IF NOT EXISTS Category (
   CategoryID INTEGER PRIMARY KEY AUTOINCREMENT,

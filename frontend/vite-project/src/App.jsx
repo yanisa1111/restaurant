@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
-// ข้อมูลจานอาหารจาก API
 function App() {
   const [tableNumber, setTableNumber] = useState(null);
   const [selectedMenu, setSelectedMenu] = useState([]);
-  const [menuData, setMenuData] = useState([]); // สถานะสำหรับเก็บข้อมูลเมนู
+  const [menuData, setMenuData] = useState([]); // เพิ่มสถานะเพื่อเก็บข้อมูลเมนู
 
-  // ดึงข้อมูลเมนูจาก backend
+  // ฟังก์ชันดึงข้อมูลเมนูจาก API
   useEffect(() => {
-    fetch("http://localhost:5000/api/menu")
+    fetch('http://localhost:5000/api/menu')
       .then((response) => response.json())
       .then((data) => {
-        setMenuData(data); // เก็บข้อมูลเมนูในสถานะ
+        setMenuData(data.menu); // เก็บข้อมูลเมนูที่ได้รับ
       })
-      .catch((error) => {
-        console.error("Error fetching menu data:", error);
-      });
-  }, []); // ดึงข้อมูลเมนูเมื่อ component ถูกโหลด
+      .catch((error) => console.error('Error fetching menu data:', error));
+  }, []); // เมื่อโหลดหน้าเว็บจะดึงข้อมูลเมนูครั้งเดียว
 
   // ฟังก์ชันเพิ่มรายการจาน
   const handleAddToOrder = (menu) => {
@@ -53,11 +50,10 @@ function App() {
     <div className="app-container">
       <h1>ร้านอาหาร</h1>
 
-      {/* เลือกโต๊ะ */}
       <div className="section">
         <label>เลือกโต๊ะ: </label>
         <select
-          value={tableNumber}
+          value={tableNumber || ''} 
           onChange={(e) => setTableNumber(e.target.value)}
         >
           <option value="">เลือกโต๊ะ</option>
@@ -71,14 +67,18 @@ function App() {
 
       {/* แสดงเมนูอาหาร */}
       <div className="menu-list">
-        {menuData.map((menu) => (
-          <div key={menu.MenuID} className="menu-item">
-            <div>
-              <strong>{menu.MenuName}</strong> - {menu.Price} บาท
+        {Array.isArray(menuData) && menuData.length > 0 ? (
+          menuData.map((menu) => (
+            <div key={menu.id} className="menu-item">
+              <div>
+                <strong>{menu.name}</strong> - {menu.price} บาท
+              </div>
+              <button onClick={() => handleAddToOrder(menu)}>+</button>
             </div>
-            <button onClick={() => handleAddToOrder(menu)}>+</button>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>กำลังโหลดเมนู...</p>
+        )}
       </div>
 
       {/* แสดงรายการที่เลือก */}
