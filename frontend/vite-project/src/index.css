@@ -1,0 +1,14 @@
+/* index.css - ปรับแต่งให้ไม่มีการกำหนด margin หรือ padding */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* ทำให้สูงเต็มหน้าจอ */
+  display: flex;
+  justify-content: center;  /* จัดคอนเทนต์กลางในแนวนอน */
+  align-items: center;      /* จัดคอนเทนต์กลางในแนวตั้ง */
+}
+
+#root {
+  width: 100%;  /* ทำให้ root ใช้ความกว้างเต็มจอ */
+  height: 100%; /* ใช้ความสูงเต็มจอ */
+}
