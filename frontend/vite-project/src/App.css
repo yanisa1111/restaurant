@@ -1,0 +1,143 @@
+/* รูปแบบของหน้าเว็บ */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* ทำให้เต็มความสูงของหน้าจอ */
+  background-color: #f9f9f9; /* พื้นหลังสีเบา */
+  font-family: 'Arial', sans-serif;
+}
+
+.app-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  /* การจัดตำแหน่งตรงกลาง */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* เปลี่ยนจาก center เป็น flex-start เพื่อไม่ให้มันยืดยาว */
+  min-height: auto; /* ปรับให้ความสูงเท่ากับขนาดเนื้อหา */
+  height: auto; /* ใช้ความสูงเท่ากับเนื้อหาจริง */
+}
+
+/* ชื่อร้าน */
+h1 {
+  color: #005f87;
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+/* ส่วนของการเลือกโต๊ะ */
+.section {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+select {
+  padding: 8px 15px;
+  margin-left: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+select:hover {
+  border-color: #005f87;
+}
+
+/* ส่วนเมนู */
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.menu-item:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item button {
+  background-color: #005f87;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu-item button:hover {
+  background-color: #004b68;
+}
+
+/* รายการที่เลือก */
+.order-list {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.order-item button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.order-item button:hover {
+  background-color: #c9302c;
+}
+
+/* ราคาสุทธิ */
+.total-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #005f87;
+  text-align: center;
+  margin-top: 40px;
+  border-top: 2px solid #005f87;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+h3 {
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
